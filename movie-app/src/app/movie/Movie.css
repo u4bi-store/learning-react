@@ -1,3 +1,7 @@
 .Movie {
     color: #ff00ff;
 }
+
+.Movie img{
+    width: 100px;
+}
