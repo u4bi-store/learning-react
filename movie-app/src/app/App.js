@@ -29,8 +29,8 @@ render() {
     return (
     <div className="App">
         
-        { movies.map(v => {
-            return <Movie title={ v.title } poster={ v.poster } />
+        { movies.map( (v, index) => {
+            return <Movie key={ index } title={ v.title } poster={ v.poster } />
         })}
 
         {/* <Movie title={ movieTitles[0] } poster={ movieImages[0] } />
