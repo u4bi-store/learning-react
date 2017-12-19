@@ -3,6 +3,9 @@ import './App.css';
 
 import Movie from './movie/Movie';
 
+
+/* smart component */
+
 class App extends Component {
 
     /* Update Lifecycle
