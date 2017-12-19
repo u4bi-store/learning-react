@@ -41,13 +41,27 @@ class App extends Component {
 
     componentDidMount(){
         console.log('did mount');
+
+        setTimeout(() => {
+            
+            this.setState({
+                name : 'update movie app'
+            });
+
+        }, 2000);
     }
+
+    state = {
+        name : 'movie app'
+    };
 
     render() {
         console.log('dis render');
         return (
         <div className="App">
             
+            { this.state.name }
+
             { movies.map( (v, index) => {
                 return <Movie key={ index } title={ v.title } poster={ v.poster } />
             })}
