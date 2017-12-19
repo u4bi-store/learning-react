@@ -26,6 +26,15 @@ const movies = [
 
 class App extends Component {
 
+    /* Update Lifecycle
+
+        componentWillReceiveProps() 1
+        shouldComponentUpdate()     2 (old props !== props) === true ? 3
+        componentWillUpdate()       3 use case : add spinner for loading
+        render()                    4
+        componentDidUpdate()        5  hide spinner
+    */
+
     componentWillMount(){
         console.log('will mount');
     }
