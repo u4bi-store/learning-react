@@ -5,7 +5,7 @@ class Movie extends Component {
     render() {
         return (
         <div className='Movie'>
-            <MoviePoster />
+            <MoviePoster poster={ this.props.poster }/>
             <h1>{ this.props.title }</h1>
         </div>
         );
@@ -15,7 +15,7 @@ class Movie extends Component {
 class MoviePoster extends Component {
     render() {
         return (
-        <img src='https://avatars0.githubusercontent.com/u/21367010?s=460&v=4'/>
+        <img src={ this.props.poster }/>
         );
     }
 }
