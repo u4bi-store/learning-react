@@ -25,21 +25,31 @@ const movies = [
 ];
 
 class App extends Component {
-render() {
-    return (
-    <div className="App">
-        
-        { movies.map( (v, index) => {
-            return <Movie key={ index } title={ v.title } poster={ v.poster } />
-        })}
 
-        {/* <Movie title={ movieTitles[0] } poster={ movieImages[0] } />
-        <Movie title={ movieTitles[1] } poster={ movieImages[1] } />
-        <Movie title={ movieTitles[2] } poster={ movieImages[2] } />
-        <Movie title={ movieTitles[3] } poster={ movieImages[3] } /> */}
-    </div>
-    );
-}
+    componentWillMount(){
+        console.log('will mount');
+    }
+
+    componentDidMount(){
+        console.log('did mount');
+    }
+
+    render() {
+        console.log('dis render');
+        return (
+        <div className="App">
+            
+            { movies.map( (v, index) => {
+                return <Movie key={ index } title={ v.title } poster={ v.poster } />
+            })}
+
+            {/* <Movie title={ movieTitles[0] } poster={ movieImages[0] } />
+            <Movie title={ movieTitles[1] } poster={ movieImages[1] } />
+            <Movie title={ movieTitles[2] } poster={ movieImages[2] } />
+            <Movie title={ movieTitles[3] } poster={ movieImages[3] } /> */}
+        </div>
+        );
+    }
 }
 
 export default App;
