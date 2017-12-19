@@ -3,27 +3,6 @@ import './App.css';
 
 import Movie from './movie/Movie';
 
-// const movieTitles = [
-//     '영화1',
-//     '영화2',
-//     '영화3',
-//     '영화4'
-// ];
-
-// const movieImages = [
-//     'http://www.hellhoundmusic.com/wp-content/uploads/2014/09/Forrest-Gump.jpg',
-//     'https://media-cache.cinematerial.com/p/500x/w6zpxfct/if-only-south-korean-poster.jpg',
-//     'http://smugglersite.com/wp-content/uploads/2016/01/Article-Image-82.jpg',
-//     'http://www.kayafm.co.za/wp-content/uploads/2016/09/pursuit-of-happyness-quote.png'
-// ];
-
-// const movies = [
-//     { title : '포레스트 검프', poster : 'http://www.hellhoundmusic.com/wp-content/uploads/2014/09/Forrest-Gump.jpg' },
-//     { title : '이프 온리',    poster : 'https://media-cache.cinematerial.com/p/500x/w6zpxfct/if-only-south-korean-poster.jpg' },
-//     { title : '원스',        poster : 'http://smugglersite.com/wp-content/uploads/2016/01/Article-Image-82.jpg' },
-//     { title : '행복을찾아서',  poster : 'http://www.kayafm.co.za/wp-content/uploads/2016/09/pursuit-of-happyness-quote.png' }
-// ];
-
 class App extends Component {
 
     /* Update Lifecycle
@@ -49,8 +28,11 @@ class App extends Component {
             });
 
             this.setState({
-                movies : [ 
-                    ...this.state.movies,
+                movies : [
+                    { title : '포레스트 검프', poster : 'http://www.hellhoundmusic.com/wp-content/uploads/2014/09/Forrest-Gump.jpg' },
+                    { title : '이프 온리',    poster : 'https://media-cache.cinematerial.com/p/500x/w6zpxfct/if-only-south-korean-poster.jpg' },
+                    { title : '원스',        poster : 'http://smugglersite.com/wp-content/uploads/2016/01/Article-Image-82.jpg' },
+                    { title : '행복을찾아서',  poster : 'http://www.kayafm.co.za/wp-content/uploads/2016/09/pursuit-of-happyness-quote.png' },
                     { title : '킥에스', poster : 'https://www.bloggang.com/data/w/waveminator/picture/1271516014.jpg' }
                 ]
             });
@@ -59,30 +41,26 @@ class App extends Component {
     }
 
     state = {
-        name   : 'movie app',
-        movies : [
-            { title : '포레스트 검프', poster : 'http://www.hellhoundmusic.com/wp-content/uploads/2014/09/Forrest-Gump.jpg' },
-            { title : '이프 온리',    poster : 'https://media-cache.cinematerial.com/p/500x/w6zpxfct/if-only-south-korean-poster.jpg' },
-            { title : '원스',        poster : 'http://smugglersite.com/wp-content/uploads/2016/01/Article-Image-82.jpg' },
-            { title : '행복을찾아서',  poster : 'http://www.kayafm.co.za/wp-content/uploads/2016/09/pursuit-of-happyness-quote.png' }
-        ]
+        name   : 'movie app'
     };
+
+    _renderMovies() {
+        const movies = this.state.movies.map( (v, index) => {
+            return <Movie key={ index } title={ v.title } poster={ v.poster } />
+        });
+
+        return movies;
+    }
 
     render() {
         console.log('dis render');
         return (
         <div className="App">
             
-            { this.state.name }
+            <p> { this.state.name } </p>
 
-            { this.state.movies.map( (v, index) => {
-                return <Movie key={ index } title={ v.title } poster={ v.poster } />
-            })}
+            { this.state.movies ? this._renderMovies() : 'Loading' }
 
-            {/* <Movie title={ movieTitles[0] } poster={ movieImages[0] } />
-            <Movie title={ movieTitles[1] } poster={ movieImages[1] } />
-            <Movie title={ movieTitles[2] } poster={ movieImages[2] } />
-            <Movie title={ movieTitles[3] } poster={ movieImages[3] } /> */}
         </div>
         );
     }
