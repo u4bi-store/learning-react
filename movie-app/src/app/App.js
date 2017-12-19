@@ -17,12 +17,12 @@ import Movie from './movie/Movie';
 //     'http://www.kayafm.co.za/wp-content/uploads/2016/09/pursuit-of-happyness-quote.png'
 // ];
 
-const movies = [
-    { title : '포레스트 검프', poster : 'http://www.hellhoundmusic.com/wp-content/uploads/2014/09/Forrest-Gump.jpg' },
-    { title : '이프 온리',    poster : 'https://media-cache.cinematerial.com/p/500x/w6zpxfct/if-only-south-korean-poster.jpg' },
-    { title : '원스',        poster : 'http://smugglersite.com/wp-content/uploads/2016/01/Article-Image-82.jpg' },
-    { title : '행복을찾아서',  poster : 'http://www.kayafm.co.za/wp-content/uploads/2016/09/pursuit-of-happyness-quote.png' }
-];
+// const movies = [
+//     { title : '포레스트 검프', poster : 'http://www.hellhoundmusic.com/wp-content/uploads/2014/09/Forrest-Gump.jpg' },
+//     { title : '이프 온리',    poster : 'https://media-cache.cinematerial.com/p/500x/w6zpxfct/if-only-south-korean-poster.jpg' },
+//     { title : '원스',        poster : 'http://smugglersite.com/wp-content/uploads/2016/01/Article-Image-82.jpg' },
+//     { title : '행복을찾아서',  poster : 'http://www.kayafm.co.za/wp-content/uploads/2016/09/pursuit-of-happyness-quote.png' }
+// ];
 
 class App extends Component {
 
@@ -48,11 +48,24 @@ class App extends Component {
                 name : 'update movie app'
             });
 
+            this.setState({
+                movies : [ 
+                    ...this.state.movies,
+                    { title : '킥에스', poster : 'https://www.bloggang.com/data/w/waveminator/picture/1271516014.jpg' }
+                ]
+            });
+
         }, 2000);
     }
 
     state = {
-        name : 'movie app'
+        name   : 'movie app',
+        movies : [
+            { title : '포레스트 검프', poster : 'http://www.hellhoundmusic.com/wp-content/uploads/2014/09/Forrest-Gump.jpg' },
+            { title : '이프 온리',    poster : 'https://media-cache.cinematerial.com/p/500x/w6zpxfct/if-only-south-korean-poster.jpg' },
+            { title : '원스',        poster : 'http://smugglersite.com/wp-content/uploads/2016/01/Article-Image-82.jpg' },
+            { title : '행복을찾아서',  poster : 'http://www.kayafm.co.za/wp-content/uploads/2016/09/pursuit-of-happyness-quote.png' }
+        ]
     };
 
     render() {
@@ -62,7 +75,7 @@ class App extends Component {
             
             { this.state.name }
 
-            { movies.map( (v, index) => {
+            { this.state.movies.map( (v, index) => {
                 return <Movie key={ index } title={ v.title } poster={ v.poster } />
             })}
 
