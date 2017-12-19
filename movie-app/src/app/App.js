@@ -29,20 +29,24 @@ class App extends Component {
 
     componentDidMount(){
         console.log('did mount');
-
-        fetch('https://yts.am/api/v2/list_movies.json?sort_by=rating')
-        .then(resp => resp.json())
-        .then(json => console.log(json))
-        .catch(err => console.error(err));
-
+        this._getMovies();
     }
 
     _renderMovies() {
-        const movies = this.state.movies.map( (v, index) => {
-            return <Movie key={ index } title={ v.title } poster={ v.poster } />
-        });
-
+        const movies = this.state.movies.map( movie => <Movie key={ movie.id } title={ movie.title } poster={ movie.medium_cover_image } />);
         return movies;
+    }
+
+    async _getMovies() {
+        const movies = await this._callApi();
+        this.setState({ movies });
+    }
+
+    _callApi() {
+        return fetch('https://yts.am/api/v2/list_movies.json?sort_by=rating')
+        .then(resp => resp.json())
+        .then(json => json.data.movies)
+        .catch(err => console.error(err));
     }
 
     render() {
